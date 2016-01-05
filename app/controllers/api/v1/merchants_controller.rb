@@ -29,16 +29,16 @@ class Api::V1::MerchantsController < ApplicationController
     params.require(:merchant).permit(:name)
   end
 
-  def authenticate!
-    authenticate_or_request_with_http_basic('Please authenticate to use my API') do |email, password|
-      user = User.find_by(email: email)
-
-      if user && user.authenticate(password)
-        true
-      else
-        head :unauthorized
-      end
-    end
-  end
+  # def authenticate!
+  #   authenticate_or_request_with_http_basic('Please authenticate to use my API') do |email, password|
+  #     user = User.find_by(email: email)
+  #
+  #     if user && user.authenticate(password)
+  #       true
+  #     else
+  #       head :unauthorized
+  #     end
+  #   end
+  # end
 
 end
