@@ -6,10 +6,10 @@ task :import, [:filename] => :environment do
   end
 end
 
-desc "Imports invoice_items csv file into database"
+desc "Imports merchants csv file into database"
 task :import, [:filename] => :environment do
-  CSV.foreach('./lib/assets/invoice_items.csv', :headers => true) do |row|
-    InvoiceItem.create(row.to_hash)
+  CSV.foreach('./lib/assets/merchants.csv', :headers => true) do |row|
+    Merchant.create(row.to_hash)
   end
 end
 
@@ -27,10 +27,10 @@ task :import, [:filename] => :environment do
   end
 end
 
-desc "Imports merchants csv file into database"
+desc "Imports invoice_items csv file into database"
 task :import, [:filename] => :environment do
-  CSV.foreach('./lib/assets/merchants.csv', :headers => true) do |row|
-    Merchant.create(row.to_hash)
+  CSV.foreach('./lib/assets/invoice_items.csv', :headers => true) do |row|
+    InvoiceItem.create(row.to_hash)
   end
 end
 
