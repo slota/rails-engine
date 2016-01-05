@@ -23,6 +23,10 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.destroy(params[:id])
   end
 
+  def random
+    respond_with Customer.random
+  end
+
   private
 
   def customer_params
