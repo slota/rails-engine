@@ -23,6 +23,10 @@ class Api::V1::TransactionsController < ApplicationController
     respond_with Transaction.destroy(params[:id])
   end
 
+  def invoice
+    respond_with Transaction.find_by(id: params[:id]).invoice
+  end
+
   def find
     if params[:credit_card_number]
       respond_with Transaction.find_by(credit_card_number: params[:credit_card_number])

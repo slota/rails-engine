@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
         member do
           get "invoice_items"
-          get "merchants"
+          get "merchant"
         end
       end
       resources :merchants, only: [:index, :show], default: { format: :json } do

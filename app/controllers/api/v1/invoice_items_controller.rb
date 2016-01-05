@@ -23,11 +23,16 @@ class Api::V1::InvoiceItemsController < ApplicationController
     respond_with InvoiceItem.destroy(params[:id])
   end
 
-  def find
-  end
-
   def random
     respond_with InvoiceItem.random
+  end
+
+  def invoice
+    respond_with InvoiceItem.find_by(id: params[:id]).invoice
+  end
+
+  def item
+    respond_with InvoiceItem.find_by(id: params[:id]).item
   end
 
   def find
