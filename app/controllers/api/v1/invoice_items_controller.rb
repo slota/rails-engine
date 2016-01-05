@@ -23,8 +23,27 @@ class Api::V1::InvoiceItemsController < ApplicationController
     respond_with InvoiceItem.destroy(params[:id])
   end
 
+  def find
+  end
+
   def random
     respond_with InvoiceItem.random
+  end
+
+  def find
+    if params[:quantity]
+      respond_with InvoiceItem.find_by(quantity: params[:quantity])
+    elsif params[:unit_price]
+      respond_with InvoiceItem.find_by(unit_price: params[:unit_price])
+    end
+  end
+
+  def find_all
+    if params[:quantity]
+      respond_with InvoiceItem.where(quantity: params[:quantity])
+    elsif params[:unit_price]
+      respond_with InvoiceItem.where(unit_price: params[:unit_price])
+    end
   end
 
   private

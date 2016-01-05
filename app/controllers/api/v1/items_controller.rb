@@ -27,6 +27,26 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.random
   end
 
+  def find
+    if params[:name]
+      respond_with Item.find_by(name: params[:name])
+    elsif params[:description]
+      respond_with Item.find_by(description: params[:description])
+    elsif params[:unit_price]
+      respond_with Item.find_by(unit_price: params[:unit_price])
+    end
+  end
+
+  def find_all
+    if params[:name]
+      respond_with Item.where(name: params[:name])
+    elsif params[:description]
+      respond_with Item.where(description: params[:description])
+    elsif params[:unit_price]
+      respond_with Item.where(unit_price: params[:unit_price])
+    end
+  end
+
   private
 
   def item_params

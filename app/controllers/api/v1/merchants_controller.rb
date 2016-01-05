@@ -27,6 +27,18 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.random
   end
 
+  def find
+    if params[:name]
+      respond_with Merchant.find_by(name: params[:name])
+    end
+  end
+
+  def find_all
+    if params[:name]
+      respond_with Merchant.where(name: params[:name])
+    end
+  end
+
   private
 
   def merchant_params

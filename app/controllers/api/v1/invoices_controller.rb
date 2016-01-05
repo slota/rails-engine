@@ -27,6 +27,18 @@ class Api::V1::InvoicesController < ApplicationController
     respond_with Invoice.random
   end
 
+  def find
+    if params[:status]
+      respond_with Invoice.find_by(status: params[:status])
+    end
+  end
+
+  def find_all
+    if params[:status]
+      respond_with Invoice.where(status: params[:status])
+    end
+  end
+
   private
 
   def invoice_params
