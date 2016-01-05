@@ -23,6 +23,10 @@ class Api::V1::TransactionsController < ApplicationController
     respond_with Transaction.destroy(params[:id])
   end
 
+  def random
+    respond_with Transaction.random
+  end
+
   private
 
   def Transaction_params

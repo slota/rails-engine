@@ -23,6 +23,10 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.destroy(params[:id])
   end
 
+  def random
+    respond_with Merchant.random
+  end
+
   private
 
   def merchant_params

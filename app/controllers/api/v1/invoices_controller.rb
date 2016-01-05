@@ -23,6 +23,10 @@ class Api::V1::InvoicesController < ApplicationController
     respond_with Invoice.destroy(params[:id])
   end
 
+  def random
+    respond_with Invoice.random
+  end
+
   private
 
   def invoice_params
