@@ -48,21 +48,17 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   def find
-    if params[:status]
-      respond_with Invoice.find_by(status: params[:status])
-    end
+    respond_with Invoice.find_by(invoices_params)
   end
 
   def find_all
-    if params[:status]
-      respond_with Invoice.where(status: params[:status])
-    end
+    respond_with Invoice.where(invoices_params)
   end
 
   private
 
-  def invoice_params
-    params.require(:invoice).permit(:status)
+  def invoices_params
+    params.permit(:id, :customer_id, :merchant_id, :status, :created_at, :updated_at)
   end
 
   # def authenticate!

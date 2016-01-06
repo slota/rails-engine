@@ -40,29 +40,17 @@ class Api::V1::ItemsController < ApplicationController
 
 
   def find
-    if params[:name]
-      respond_with Item.find_by(name: params[:name])
-    elsif params[:description]
-      respond_with Item.find_by(description: params[:description])
-    elsif params[:unit_price]
-      respond_with Item.find_by(unit_price: params[:unit_price])
-    end
+    respond_with Item.find_by(items_params)
   end
 
   def find_all
-    if params[:name]
-      respond_with Item.where(name: params[:name])
-    elsif params[:description]
-      respond_with Item.where(description: params[:description])
-    elsif params[:unit_price]
-      respond_with Item.where(unit_price: params[:unit_price])
-    end
+    respond_with Item.where(items_params)
   end
 
   private
 
-  def item_params
-    params.require(:item).permit(:name, :description)
+  def items_params
+    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)
   end
 
   # def authenticate!

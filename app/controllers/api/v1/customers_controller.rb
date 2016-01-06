@@ -1,5 +1,5 @@
 class Api::V1::CustomersController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json, :html
 
   # before_action :authenticate!
 
@@ -24,19 +24,11 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   def find
-    if params[:first_name]
-      respond_with Customer.find_by(first_name: params[:first_name])
-    elsif params[:last_name]
-      respond_with Customer.find_by(last_name: params[:last_name])
-    end
+    respond_with Customer.find_by(customer_params)
   end
 
   def find_all
-    if params[:first_name]
-      respond_with Customer.where(first_name: params[:first_name])
-    elsif params[:last_name]
-      respond_with Customer.where(last_name: params[:last_name])
-    end
+    respond_with Customer.where(customer_params)
   end
 
   def random
@@ -54,19 +46,7 @@ class Api::V1::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:Customer).permit(:first_name, :last_name)
+    params.permit(:id, :first_name, :last_name, :created_at, :updated_at)
   end
-  #
-  # def authenticate!
-  #   authenticate_or_request_with_http_basic('Please authenticate to use my API') do |email, password|
-  #     user = User.find_by(email: email)
-  #
-  #     if user && user.authenticate(password)
-  #       true
-  #     else
-  #       head :unauthorized
-  #     end
-  #   end
-  # end
 
 end

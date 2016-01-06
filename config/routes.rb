@@ -52,7 +52,7 @@ Rails.application.routes.draw do
           get "merchant"
         end
       end
-      resources :merchants, only: [:index, :show], default: { format: :json } do
+        resources :merchants, only: [:index, :show], default: { format: :json } do
         collection do
           get "find"
           get "find_all"

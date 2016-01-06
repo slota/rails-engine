@@ -1,5 +1,5 @@
 class Api::V1::TransactionsController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json, :xml, :html
 
   # before_action :authenticate!
 
@@ -27,34 +27,22 @@ class Api::V1::TransactionsController < ApplicationController
     respond_with Transaction.find_by(id: params[:id]).invoice
   end
 
-  def find
-    if params[:credit_card_number]
-      respond_with Transaction.find_by(credit_card_number: params[:credit_card_number])
-    elsif params[:credit_card_expiration_date]
-      respond_with Transaction.find_by(credit_card_expiration_date: params[:credit_card_expiration_date])
-    elsif params[:result]
-      respond_with Transaction.find_by(result: params[:result])
-    end
-  end
-
-  def find_all
-    if params[:credit_card_number]
-      respond_with Transaction.where(credit_card_number: params[:credit_card_number])
-    elsif params[:credit_card_expiration_date]
-      respond_with Transaction.where(credit_card_expiration_date: params[:credit_card_expiration_date])
-    elsif params[:result]
-      respond_with Transaction.where(result: params[:result])
-    end
-  end
-
   def random
     respond_with Transaction.random
   end
 
+  def find
+    respond_with Transaction.find_by(transaction_params)
+  end
+
+  def find_all
+    respond_with Transaction.where(transaction_params)
+  end
+
   private
 
-  def Transaction_params
-    params.require(:transaction).permit(:invoice_id, :credit_card_number, :credit_card_expiration_date, :result)
+  def transaction_params
+    params.permit(:id, :invoice_id, :credit_card_number, :result, :created_at, :updated_at)
   end
 
   # def authenticate!

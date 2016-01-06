@@ -36,21 +36,18 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def find
-    if params[:name]
-      respond_with Merchant.find_by(name: params[:name])
-    end
+    respond_with Merchant.find_by(merchant_params)
   end
 
   def find_all
-    if params[:name]
-      respond_with Merchant.where(name: params[:name])
-    end
+    respond_with Merchant.where(merchant_params)
   end
+
 
   private
 
   def merchant_params
-    params.require(:merchant).permit(:name)
+    params.permit(:id, :name, :created_at, :updated_at)
   end
 
   # def authenticate!
