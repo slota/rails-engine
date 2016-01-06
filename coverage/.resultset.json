@@ -1,0 +1,61 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/customer_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/invoice_item_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/invoice_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/item_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/merchant_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/johnslota/code/ruby_rails/rails_engine/test/models/transaction_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1452057082
+  }
+}

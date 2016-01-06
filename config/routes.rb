@@ -40,7 +40,7 @@ Rails.application.routes.draw do
           get "merchant"
         end
       end
-      resources :items, only: [:index, :show], default: { format: :json } do
+      resources :items, only: [:index, :show] do
         collection do
           get "find"
           get "find_all"

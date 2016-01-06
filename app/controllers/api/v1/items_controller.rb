@@ -35,10 +35,6 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.find_by(id: params[:id]).merchant
   end
 
-
-
-
-
   def find
     respond_with Item.find_by(items_params)
   end
