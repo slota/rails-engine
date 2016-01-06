@@ -1,0 +1,7 @@
+one:
+  credit_card_number: 345
+  result: pretty sweet
+
+two:
+  credit_card_number: 345
+  result: horrible

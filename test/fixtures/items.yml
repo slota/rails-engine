@@ -1,0 +1,19 @@
+one:
+  name: stark
+  description: honorable but dead
+  unit_price: 99.99
+
+two:
+  name: lannister
+  description: rich but inbred
+  unit_price: 66.66
+
+three:
+  name: dorn
+  description: sexy but arrogant
+  unit_price: 99.99
+
+four:
+  name: tarrenhall
+  description: smart but locked up
+  unit_price: 33.33
