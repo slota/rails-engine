@@ -18,8 +18,8 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     get :show, format: :json, id: 1
 
     assert_response :success
-    assert_equal "jesus", customer["first_name"]
-    assert_equal "christ", customer["last_name"]
+    assert_equal "ned", customer["first_name"]
+    assert_equal "stark", customer["last_name"]
   end
 
   test "#random" do

@@ -6,8 +6,12 @@ class Invoice < ActiveRecord::Base
 
   has_many :items, through: :invoice_items
 
-
   def self.random
     order("RANDOM()").first
   end
+
+  def self.successful_invoices
+    joins(:transactions).where(transactions: { result: 'success'} )
+  end
+
 end

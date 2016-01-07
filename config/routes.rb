@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         member do
           get "invoices"
           get "transactions"
+          get "favorite_merchant"
         end
       end
       resources :invoice_items, only: [:index, :show] do
@@ -52,16 +53,20 @@ Rails.application.routes.draw do
           get "merchant"
         end
       end
-        resources :merchants, only: [:index, :show] do
+      resources :merchants, only: [:index, :show] do
         collection do
           get "find"
           get "find_all"
           get "random"
+          get "most_items"
+          get "revenue", to: "merchants#revenue_by_date"
         end
 
         member do
           get "items"
           get "invoices"
+          get "favorite_customer"
+          get "revenue"
         end
       end
       resources :transactions, only: [:index, :show] do

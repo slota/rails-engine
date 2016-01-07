@@ -4,4 +4,8 @@ class Transaction < ActiveRecord::Base
   def self.random
     order("RANDOM()").first
   end
+
+  def self.successful_transactions
+    transactions.where(transactions: { result: 'success'} )
+  end
 end

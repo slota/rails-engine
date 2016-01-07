@@ -11,16 +11,8 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.find_by(id: params[:id])
   end
 
-  def create
-    respond_with Customer.create(customer_params)
-  end
-
-  def update
-    respond_with Customer.update(params[:id], customer_params)
-  end
-
-  def destroy
-    respond_with Customer.destroy(params[:id])
+  def favorite_merchant
+    respond_with Customer.find_by(customer_params).favorite_merchant
   end
 
   def find

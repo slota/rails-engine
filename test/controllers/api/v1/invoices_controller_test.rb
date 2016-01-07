@@ -27,6 +27,6 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
 
     invoice = JSON.parse(response.body)
 
-    assert_not_nil(invoice, faliure_message = nil)
+    assert_not_nil(invoice, failure_message = nil)
   end
 end

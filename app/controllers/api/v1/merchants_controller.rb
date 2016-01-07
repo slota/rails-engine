@@ -1,5 +1,5 @@
 class Api::V1::MerchantsController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json, :xml, :html
 
   # before_action :authenticate!
 
@@ -9,18 +9,6 @@ class Api::V1::MerchantsController < ApplicationController
 
   def show
     respond_with Merchant.find_by(id: params[:id])
-  end
-
-  def create
-    respond_with Merchant.create(merchant_params)
-  end
-
-  def update
-    respond_with Merchant.update(params[:id], merchant_params)
-  end
-
-  def destroy
-    respond_with Merchant.destroy(params[:id])
   end
 
   def random
@@ -43,11 +31,27 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.where(merchant_params)
   end
 
+  def most_items
+    respond_with Merchant.most_items(merchant_params["quantity"].to_i).reverse
+  end
+
+  def revenue
+    respond_with Merchant.find_by(id: params[:id]).revenue(merchant_params)
+  end
+
+  def favorite_customer
+    respond_with Merchant.find_by(merchant_params).favorite_customer
+  end
+
+  def revenue_by_date
+    respond_with Merchant.all.revenue_by_date(params[:date])
+  end
+
 
   private
 
   def merchant_params
-    params.permit(:id, :name, :created_at, :updated_at)
+    params.permit(:id, :name, :created_at, :updated_at, :quantity, :date)
   end
 
   # def authenticate!
