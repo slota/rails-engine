@@ -1,8 +1,6 @@
 class Api::V1::MerchantsController < ApplicationController
   respond_to :json, :xml, :html
 
-  # before_action :authenticate!
-
   def index
     respond_with Merchant.all
   end

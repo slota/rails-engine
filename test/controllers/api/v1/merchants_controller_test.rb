@@ -27,4 +27,18 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
 
     assert_not_nil(merchants, faliure_message = nil)
   end
+
+  test "#find" do
+    merchant = Merchant.first
+    get :find, format: :json, id: merchant.id
+
+    assert_response :success
+    assert_kind_of Hash, json_response
+  end
+
+  test "#find all" do
+    get :find_all, format: :json
+    assert_response :success
+    assert_kind_of Array, json_response
+  end
 end

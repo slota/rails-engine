@@ -29,4 +29,20 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
 
     assert_not_nil(customers, faliure_message = nil)
   end
+
+
+  test "#find" do
+    customer = Customer.first
+    get :find, format: :json, id: customer.id
+
+    assert_response :success
+    assert_kind_of Hash, json_response
+  end
+
+  test "#find all" do
+    get :find_all, format: :json
+    assert_response :success
+    assert_kind_of Array, json_response
+  end
+
 end

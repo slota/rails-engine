@@ -29,4 +29,18 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
 
     assert_not_nil(invoice, failure_message = nil)
   end
+
+  test "#find" do
+    invoice = Invoice.first
+    get :find, format: :json, id: invoice.id
+
+    assert_response :success
+    assert_kind_of Hash, json_response
+  end
+
+  test "#find all" do
+    get :find_all, format: :json
+    assert_response :success
+    assert_kind_of Array, json_response
+  end
 end
